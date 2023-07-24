@@ -1,5 +1,5 @@
 import { DataSource, DataSourceOptions } from "typeorm"
-import path from "path"
+import path from "node:path"
 import "dotenv/config"
 
 const DataSourceConfig = (): DataSourceOptions => {
@@ -20,7 +20,7 @@ const DataSourceConfig = (): DataSourceOptions => {
 
   return {
     type: "postgres",
-    url: process.env.DATABASE_URL,
+    url: process.env.DATABASE_URL!,
     synchronize: false,
     logging: true,
     entities: [entitiesPath],
