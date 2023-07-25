@@ -1,10 +1,12 @@
 import { z } from 'zod'
-import { userSchema, userSchemaRequest, userSchemaResponse } from '../schemas/user.schema'
+import { AllClientsResponseSchema, clientSchema, clientSchemaRequest, clientSchemaResponse } from '../schemas/client.schema'
 
-type TUser = z.infer<typeof userSchema>
+type TClient = z.infer<typeof clientSchema>
 
-type TUserRequest = z.infer<typeof userSchemaRequest>
+type TClientRequest = z.infer<typeof clientSchemaRequest>
 
-type TUserResponse = z.infer<typeof userSchemaResponse>
+type TClientResponse = z.infer<typeof clientSchemaResponse>
 
-export { TUser, TUserRequest, TUserResponse }
+type TAllClients = z.infer<typeof AllClientsResponseSchema>
+
+export { TClient, TClientRequest, TClientResponse, TAllClients }

@@ -5,7 +5,7 @@ const ensureDataIsValid = (schema: ZodTypeAny) => (req: Request, res: Response, 
     const validateData = schema.parse(req.body)
 
     req.body = validateData
-
+    
     return next()
 }
 

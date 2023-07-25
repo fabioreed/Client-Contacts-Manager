@@ -13,8 +13,11 @@ export const ensureTokenIsValid = (req: Request, res: Response, next: NextFuncti
   jwt.verify(token, process.env.SECRET_KEY!, (err: any, decoded: any) => {
     if (err) throw new AppError(err.message, 401)
 
-    res.locals.token = decoded.sub
-    
-    return next()
+    res.locals.token = {
+      id: decoded.sub,
+      admin: decoded?.admin
+    }
   })
+  
+  return next()
 }

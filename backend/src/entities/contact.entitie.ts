@@ -1,8 +1,8 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { Contact } from "./contact.entitie"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm"
+import { Client } from "./client.entitie"
 
-@Entity('client')
-class Client {
+@Entity('contact')
+class Contact {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -15,14 +15,11 @@ class Client {
   @Column({ type: 'varchar', nullable: true })
   number?: string | null | undefined
 
-  @Column({ type: 'varchar', length: 120 })
-  password: string
-
   @CreateDateColumn({ type: 'date' })
   createdAt: string
 
-  @OneToMany(() => Contact, contact => contact.client)
-  contact: Contact[]
+  @ManyToOne(() => Client)
+  client: Client
 }
 
-export { Client }
+export { Contact }
