@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const MainContainer = styled.main`
   display: flex;
@@ -7,9 +6,13 @@ export const MainContainer = styled.main`
   gap: 1rem;
 
   padding: 2rem;
+
+  @media (min-width: 769px) {
+    padding: 4rem 7rem;
+  }
 `
 
-export const ButtonDash = styled(Link)`
+export const ButtonDash = styled.button`
   background: var(--green);
   color: var(--primary-color);
   font-size: .8rem;
@@ -21,18 +24,40 @@ export const ButtonDash = styled(Link)`
   border-radius: 6px;
 
   align-self: flex-end;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
+
+  &:hover {
+    background-color: var(--dark-green);
+    color: var(--white);
+  }
+
+  @media (min-width: 769px) {
+    align-self: flex-start;
+  }
 `
 
 export const SectionContainerDash = styled.section`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    @media (min-width: 769px) {
+      /* padding: 4rem; */
+    }
 `
 
 export const ListCard = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    @media (min-width: 769px) {
+      flex-direction: row;
+      gap: 1.7rem;
+    }
 `
 
 export const Card = styled.li`
@@ -46,6 +71,7 @@ export const Card = styled.li`
   border-radius: 6px;
 
   padding: 1rem;
+  width: 100%;
 
   > h4 {
     font-size: .9rem;
@@ -67,8 +93,19 @@ export const Card = styled.li`
       border-radius: 6px;
 
       font-size: .7rem;
-    }
 
-    width: 100%;
+      cursor: pointer;
+
+      transition: all .2s ease;
+
+      &:hover {
+        background-color: var(--dark-green);
+        color: var(--white);
+      }
+    }
+  }
+
+  @media (min-width: 769px) {
+    width: 280px;
   }
 `

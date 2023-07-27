@@ -1,39 +1,55 @@
-// "name": "Reed",
-//   "email": "fafa@mail.com",
-//     "password": "123456",
-//       "number": "8398639116"
-
-import { ButtonContainerRegister, HeaderContainerRegister, SectionContainerRegister } from "./style"
+import { useContext } from "react"
+import { ButtonContainerRegister, HeaderContainerRegister, SectionContainerRegister, LoginButton, Error } from "./style"
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { UserContext } from "../../providers/UserContext"
+import { formSchema } from "./validations"
+import { IRegisterFormValues } from "../../providers/@types"
 
 const Register = () => {
+  const { userRegister } = useContext(UserContext)
+  const { register, handleSubmit, formState: { errors } } = useForm<IRegisterFormValues>({
+    resolver: yupResolver(formSchema)
+  })
+
+  const submit: SubmitHandler<IRegisterFormValues> = (data: IRegisterFormValues) => {
+    userRegister(data)
+  }
+
   return (
     <main>
       <HeaderContainerRegister>
         <h2>Register</h2>
         <p>Create your Account</p>
       </HeaderContainerRegister>
-      <SectionContainerRegister>
+
+      <SectionContainerRegister onSubmit={handleSubmit(submit)}>
         <div>
-          <label htmlFor="">Name:</label>
-          <input type="text" placeholder='Your name' />
+          <label>Name:</label>
+          <input type="text" placeholder='Your name' {...register('name')}/>
+          {errors.name?.message ? <Error>{errors.name.message} *</Error> : null}
         </div>
         <div>
-          <label htmlFor="">Email:</label>
-          <input type="text" placeholder='Your best email' />
+          <label>Email:</label>
+          <input type="text" placeholder='Your best email' {...register('email')} />
+          {errors.email?.message ? <Error>{errors.email.message} *</Error> : null}
         </div>
         <div>
-          <label htmlFor="">Password:</label>
-          <input type="text" placeholder='Password' />
+          <label>Password:</label>
+          <input type="text" placeholder='Password' {...register('password')} />
+          {errors.password?.message ? <Error>{errors.password.message} *</Error> : null}
         </div>
         <div>
-          <label htmlFor="">Phone number:</label>
-          <input type="text" placeholder='(+1) 555-555' />
+          <label>Phone number:</label>
+          <input type="text" placeholder='(+1) 555-555' {...register('phone')} />
+          {errors.phone?.message ? <Error>{errors.phone.message} *</Error> : null}
         </div>
         <ButtonContainerRegister>
-          <span>Create Account</span>
-          <button>Register</button>
+          <LoginButton to='/'>Sign In</LoginButton>
+          <button type='submit'>Register</button>
         </ButtonContainerRegister>
       </SectionContainerRegister>
+
     </main>
   )
 }

@@ -20,11 +20,19 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --primary-color: #0C1C2C;
+    --secondary-color: #1F2E3C;
+    --black: #131416;
     --green: #C0E863;
+    --mid-green: #12B1A6;
     --dark-green: #8DB14B;
     --white: #FFFFFF;
     --light-gray: #D1D9DD;
     --dark-gray: #9DA1A5;
+    --light-blue: #2373A3;
+    --mid-blue: #23609C;
+    --dark-blue: #162534;
+    --purple: #925C76;
+    --mid-purple: #7B4F79;
   }
 
   body {
