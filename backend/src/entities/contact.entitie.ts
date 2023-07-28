@@ -18,7 +18,7 @@ class Contact {
   @CreateDateColumn({ type: 'date' })
   createdAt: string
 
-  @ManyToOne(() => Client)
+  @ManyToOne(() => Client, (client) => client.contact)
   client: Client
 }
 

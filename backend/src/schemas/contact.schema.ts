@@ -11,4 +11,6 @@ const TContactSchema = z.object({
   createdAt: z.string()
 })
 
-export { TContactSchema }
+const contactSchemaResponse = z.array(TContactSchema)
+
+export { TContactSchema, contactSchemaResponse }

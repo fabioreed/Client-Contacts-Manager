@@ -19,5 +19,5 @@ export const ensureTokenIsValid = (req: Request, res: Response, next: NextFuncti
     }
   })
   
-  return next()
+  next()
 }

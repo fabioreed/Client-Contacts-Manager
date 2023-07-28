@@ -23,8 +23,6 @@ const updateClientController = async (req: Request, res: Response): Promise<Resp
 const deleteClientController = async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params
 
-    console.log(id, req.params)
-
     await deleteClientService(id)
     return res.status(204).send()
 }

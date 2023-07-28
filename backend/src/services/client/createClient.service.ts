@@ -33,6 +33,15 @@ const getAllUsersService = async (): Promise<TAllClients> => {
   return clients
 }
 
+// export const getUserByIdService = async (clientId: string): Promise<TClientRequest> => {
+//   const clientRepository: Repository<Client> = AppDataSource.getRepository(Client)
+//   const getClient: Client = await clientRepository.findOne({ where: { id: clientId } })
+  
+//   if (!getClient) throw new AppError('User not found', 404)
+  
+//   return getClient
+// }
+
 const updateClientService = async (clientData: any, id: string): Promise<TClientResponse> => {
   const clientRepository: Repository<Client> = AppDataSource.getRepository(Client)
   const oldClientData = await clientRepository.findOne({ where: { id: id }})
@@ -51,8 +60,6 @@ const updateClientService = async (clientData: any, id: string): Promise<TClient
 const deleteClientService = async (id: string): Promise<void> => {
   const clientRepository: Repository<Client> = AppDataSource.getRepository(Client)
   const client = await clientRepository.findOneBy({ id: id })
-
-  console.log(client)
 
   await clientRepository.remove(client!)
 }
