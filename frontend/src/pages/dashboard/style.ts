@@ -116,4 +116,12 @@ export const Card = styled.li`
 export const ContainerOfTheButtons = styled.div`
   display: flex;
   justify-content: space-between;
+
+  position: relative;
+
+  > span {
+    position: absolute;
+    top: -6px;
+    right: 0;
+  }
 `

@@ -8,6 +8,7 @@ import ModalCreate from "../../components/ModalCreate"
 import ModalEdit from "../../components/ModalEdit"
 import Empty from "../../components/Empty"
 import AllContacts from "../../components/AllContacts"
+import { Badge } from '@mui/material'
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -44,7 +45,12 @@ const Dashboard = () => {
       <MainContainer>
         <ContainerOfTheButtons>
           <ButtonDash onClick={() => setModal(!modal)}>+ Add Contact</ButtonDash>
-          <ButtonDash onClick={() => setListAllContacts(!listAllContacts)}>See All Contacts</ButtonDash>
+          <ButtonDash onClick={() => setListAllContacts(!listAllContacts)}>
+            See All Contacts
+          </ButtonDash>
+          <span>
+            {contact.length > 0 ? <Badge badgeContent={contact.length} color='primary' /> : <Badge invisible={true} />}
+          </span>
         </ContainerOfTheButtons>
         <SectionContainerDash>
           {contact.length ? (

@@ -49,10 +49,6 @@ export const ContainerListAllContacts = styled.ul`
 `
 
 export const ButtonClose = styled.button`
-  position: absolute;
-  top: 35%;
-  right: 37%;
-
   z-index: 3;
 
   background-color: var(--primary-color);
@@ -62,6 +58,15 @@ export const ButtonClose = styled.button`
   border-radius: 50%;
 
   padding: .5rem .7rem;
+
+  transition: .2s ease;
+
+  &:hover {
+    font-size: 1rem;
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 1.4px dotted var(--primary-color);
+  }
 `
 
 export const CardList = styled.li`
@@ -82,5 +87,31 @@ export const CardList = styled.li`
     color: var(--dark-gray);
   }
 
-  border-bottom: 1px solid var(--dark-gray);
+  border-right: 1.4px solid var(--dark-gray);
+
+  @media (min-width: 769px) {
+    width: 380px;
+  }
+`
+
+export const TopPartContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: .6rem;
+
+  margin-bottom: 1rem;
+
+  > h2 {
+    color: var(--dark-gray);
+    font-size: 1.3rem;
+    z-index: 3;
+  }
+`
+
+export const NothingHere = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+
+  align-items: center;
 `
