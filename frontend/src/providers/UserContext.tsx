@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react"
-// import { toast } from 'react-toastify'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import { IRegisterFormValues, IUser } from "./@types"
 import { api } from "../services/api"
 import { useNavigate } from "react-router-dom"
@@ -20,7 +21,7 @@ export interface ILoginFormValues {
   password: string
 }
 
-export const UserContext = createContext({} as IUserContext) // as IUserContext
+export const UserContext = createContext({} as IUserContext)
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const navigate = useNavigate()
@@ -46,7 +47,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         } catch (error) {
           console.log(error)
           setUser(null)
-          // localStorage.clear()
+          localStorage.clear()
         }
       }
       getUser()
@@ -59,33 +60,37 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
       setUser(res.data)
 
-      // toast.success('User registered!')
+      toast.success('User registered!')
 
       navigate('/')
+
     } catch (error) {
+
       console.log(error)
-      console.log('Cadastro falhou!')
-      // toast.error('Email already exists.')
+      
+      toast.error('Email already exists.')
+
     }
   }
 
   const userLogin = async (formData: ILoginFormValues) => {
     try {
       const res = await api.post('/login', formData)
-
+      
       setUser(res.data)
 
       localStorage.setItem('@clientToken', res.data.token)
 
-      // toast.success('Logged in!')
-      console.log(res.data.message)
+      localStorage.setItem('@clientId', res.data.id)
+
+      toast.success('Logged in!')
 
       navigate('/dashboard')
       
     } catch (error) {
       console.log(error)
-      console.log('Login falhou!')
-      // toast.error('Something went wrong!')
+
+      toast.error('Something went wrong!')
     }
   }
 

@@ -44,7 +44,7 @@ export const ModalContainer = styled.form`
   }
 
   @media (min-width: 769px) {
-    
+    width: 400px;
   }
 `
 

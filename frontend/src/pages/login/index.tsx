@@ -1,5 +1,5 @@
 import { HeaderContainerLogin, SectionContainerLogin, ButtonContainerLogin, SectionContainerOfMain, RegisterButton, Error } from './style'
-// import LoginCartoon from '../../assets/'
+import LoginCartoon from '../../assets/Email capture-bro.svg'
 import { useContext } from 'react'
 import * as yup from 'yup'
 import { ILoginFormValues, UserContext } from '../../providers/UserContext'
@@ -45,7 +45,7 @@ const Login = () => {
           </ButtonContainerLogin>
         </SectionContainerLogin>
         <aside>
-          {/* <img src={LoginCartoon} /> */}
+          <img src={LoginCartoon} />
         </aside>
       </SectionContainerOfMain>
     </main>

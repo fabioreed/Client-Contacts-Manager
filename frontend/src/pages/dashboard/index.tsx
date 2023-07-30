@@ -1,15 +1,18 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import Header from "../../components/Header"
-import { ButtonDash, Card, ListCard, MainContainer, SectionContainerDash } from "./style"
-import { DashContext } from "../../providers/DashContext"
+import { ButtonDash, Card, ContainerOfTheButtons, ListCard, MainContainer, SectionContainerDash } from "./style"
+import { DashContext, IClient } from "../../providers/DashContext"
 import { api } from "../../services/api"
 import { useNavigate } from "react-router-dom"
 import ModalCreate from "../../components/ModalCreate"
 import ModalEdit from "../../components/ModalEdit"
+import Empty from "../../components/Empty"
+import AllContacts from "../../components/AllContacts"
 
 const Dashboard = () => {
   const navigate = useNavigate()
-  const { contact, setContact, modal, setModal , editModal, setEditModal, deleteModal, setDeleteModal } = useContext(DashContext)
+  const [selectedContact, setSelectedContact] = useState<IClient | null>(null)
+  const { contact, setContact, modal, setModal, removeContact, listAllContacts, setListAllContacts } = useContext(DashContext)
 
   useEffect(() => {
     const token = localStorage.getItem('@clientToken')
@@ -24,58 +27,49 @@ const Dashboard = () => {
 
           setContact(res.data)
 
-          console.log(res, '1')
-          console.log(res.data, '2')
-          console.log(contact)
-
           navigate('/dashboard')
         } catch (error) {
           console.log(error)
-
-          // navigate('/')
-
-          // localStorage.clear()
+          navigate('/')
+          localStorage.clear()
         }
       }
       getClients()
     }
   }, [])
 
-  // console.log(contact)
-
   return (
     <>
       <Header />
       <MainContainer>
-        <ButtonDash onClick={() => setModal(!modal)}>+ Add Contact</ButtonDash>
+        <ContainerOfTheButtons>
+          <ButtonDash onClick={() => setModal(!modal)}>+ Add Contact</ButtonDash>
+          <ButtonDash onClick={() => setListAllContacts(!listAllContacts)}>See All Contacts</ButtonDash>
+        </ContainerOfTheButtons>
         <SectionContainerDash>
-          <ListCard>
-            <Card>
-              <h4>Name</h4>
-              <span>1198888-9999</span>
-              <span>email@mail.com</span>
-              <span>Created at: 24/07/23</span>
-              <div>
-                <button onClick={() => setEditModal(!editModal)}>Edit</button>
-                <button onClick={() => setDeleteModal(!deleteModal)}>Delete</button>
-              </div>
-            </Card>
-
-            <Card>
-              <h4>Name</h4>
-              <span>1198888-9999</span>
-              <span>email@mail.com</span>
-              <span>Created at: 24/07/23</span>
-              <div>
-                <button onClick={() => setModal(!modal)}>Edit</button>
-                <button onClick={() => setModal(!modal)}>Delete</button>
-              </div>
-            </Card>
-            {modal && <ModalCreate />}
-            {editModal && <ModalEdit />}
-          </ListCard>
+          {contact.length ? (
+            <ListCard>
+              {contact.map((item) => (
+                <Card key={item.id}>
+                  <h4>{item.name}</h4>
+                  <span>Number {item.number}</span>
+                  <span>{item.email}</span>
+                  <span>Created at: {item.createdAt}</span>
+                  <div>
+                    <button onClick={() => setSelectedContact(item)}>Edit</button>
+                    <button onClick={() => removeContact(item.id)}>Delete</button>
+                  </div>
+                </Card>
+              ))}
+            </ListCard>
+            ) : (
+            <Empty />)}
         </SectionContainerDash>
       </MainContainer>
+
+      { selectedContact && <ModalEdit id={selectedContact.id} contact={selectedContact} /> }
+      { modal && <ModalCreate /> }
+      { listAllContacts && <AllContacts /> }
     </>
   )
 }

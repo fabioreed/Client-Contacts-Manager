@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { createClientController, deleteClientController, getAllClientsController, updateClientController } from "../controllers/clients.controller"
+import { createClientController, deleteClientController, getAllClientsController, retrieveClientController, updateClientController } from "../controllers/clients.controller"
 import { ensureDataIsValid } from "../middlewares/ensureDataIsValid.middleware"
 import { clientSchemaRequest, clientSchemaResponse } from "../schemas/client.schema"
 import { ensureIsAdmMiddleware } from "../middlewares/ensureIsAdm.middleware"
@@ -10,7 +10,8 @@ const clientRoutes = Router()
 
 clientRoutes.post('', ensureDataIsValid(clientSchemaRequest), createClientController)
 clientRoutes.get('', getAllClientsController)
-clientRoutes.patch('/:id', ensureUserExistsMiddleware, updateClientController)
+clientRoutes.get('/:id', ensureTokenIsValid, retrieveClientController)
+clientRoutes.patch('/:id', ensureUserExistsMiddleware, ensureTokenIsValid, updateClientController)
 clientRoutes.delete('/:id', ensureTokenIsValid, ensureUserExistsMiddleware, deleteClientController)
 
 export { clientRoutes }

@@ -36,16 +36,16 @@ export const HeaderContainer = styled.header`
       width: 40px;
     }
 
-    > span {
-      color: var(--light-gray);
-      font-size: .5rem;
-      font-weight: 400;
+    > section {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+      /* justify-content: center; */
 
-      display: none;
-
-      @media (min-width: 769px) {
-        display: block;
-        font-size: .8rem;
+      > span {
+        color: var(--light-gray);
+        font-size: .7rem;
+        font-weight: 400;
       }
     }
 

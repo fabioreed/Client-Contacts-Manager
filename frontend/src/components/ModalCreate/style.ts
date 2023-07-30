@@ -42,6 +42,10 @@ export const ModalContainer = styled.form`
       color: var(--white);
     }
   }
+
+   @media (min-width: 769px) {
+    width: 400px;
+  }
 `
 
 export const FieldSet = styled.fieldset`

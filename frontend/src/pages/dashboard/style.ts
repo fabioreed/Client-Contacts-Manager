@@ -45,7 +45,7 @@ export const SectionContainerDash = styled.section`
     gap: 1rem;
 
     @media (min-width: 769px) {
-      /* padding: 4rem; */
+      justify-content: space-between;
     }
 `
 
@@ -56,6 +56,7 @@ export const ListCard = styled.ul`
 
     @media (min-width: 769px) {
       flex-direction: row;
+      flex-wrap: wrap;
       gap: 1.7rem;
     }
 `
@@ -72,6 +73,8 @@ export const Card = styled.li`
 
   padding: 1rem;
   width: 100%;
+
+  flex-shrink: 0;
 
   > h4 {
     font-size: .9rem;
@@ -108,4 +111,9 @@ export const Card = styled.li`
   @media (min-width: 769px) {
     width: 280px;
   }
+`
+
+export const ContainerOfTheButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
 `

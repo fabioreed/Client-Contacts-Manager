@@ -2,6 +2,7 @@ import { ToastContainer } from "react-toastify"
 import { MyRoutes } from "./routes"
 import GlobalStyle from "./styles/globalStyles"
 import Reset from "./styles/reset"
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
   return (
@@ -10,8 +11,8 @@ const App = () => {
       <GlobalStyle />
       <MyRoutes />
       <ToastContainer
-        position="top-center"
-        autoClose={950}
+        position="top-right"
+        autoClose={550}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -19,7 +20,7 @@ const App = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme="colored"
       />
     </>
   )

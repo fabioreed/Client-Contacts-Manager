@@ -11,20 +11,21 @@ export const MyRoutes = () => {
   return (
     <UserProvider>
       <DashProvider>
+
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='*' element={<Login />} />
           
-          <Route path='/dashboard' element={<Dashboard />} />
+          {/* <Route path='/dashboard' element={<Dashboard />} /> */}
 
-          {/* <Route path='/dashboard' element={<ProtectedRoutes />}>
-              <Route index element={
-                <DashProvider>
-                  <Dashboard />
-                  </DashProvider>
-                } />
-              </Route> */}
+          <Route path='/dashboard' element={<ProtectedRoutes />}>
+            <Route index element={
+              <DashProvider>
+              <Dashboard />
+              </DashProvider>
+            } />
+          </Route>
         </Routes>
       </DashProvider>
     </UserProvider>
