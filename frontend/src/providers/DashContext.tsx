@@ -115,7 +115,8 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
 
         setContact(newContact)
 
-        setEditModal(false)
+        setSelectedContact(!selectedContact)
+
         const editedIndex = newContact.findIndex(item => item.id === id)
 
         if (editedIndex !== -1) setEditedContact(newContact[editedIndex]) 

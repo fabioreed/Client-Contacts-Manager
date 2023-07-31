@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import Header from "../../components/Header"
 import { ButtonDash, Card, ContainerOfTheButtons, ListCard, MainContainer, SectionContainerDash } from "./style"
-import { DashContext, IClient } from "../../providers/DashContext"
+import { DashContext } from "../../providers/DashContext"
 import { api } from "../../services/api"
 import { useNavigate } from "react-router-dom"
 import ModalCreate from "../../components/ModalCreate"
@@ -13,7 +13,6 @@ import EditProfileForm from "../../components/EditProfile"
 
 const Dashboard = () => {
   const navigate = useNavigate()
-  // const [selectedContact, setSelectedContact] = useState<IClient | null | any>(null)
   const { contact, setContact, modal, setModal, removeContact, listAllContacts, setListAllContacts, profileEditModal, selectedContact, setSelectedContact } = useContext(DashContext)
 
   useEffect(() => {
@@ -65,7 +64,6 @@ const Dashboard = () => {
                   <div>
                     <button onClick={() => {
                       setSelectedContact(item)
-                      console.log('Aqui 2', selectedContact)
                     }}>Edit</button>
                     <button onClick={() => removeContact(item.id)}>Delete</button>
                   </div>
