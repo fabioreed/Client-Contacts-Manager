@@ -4,10 +4,7 @@ import { TLoginRequest } from "../interfaces/login.interface"
 
 const createTokenController = async (req: Request, res: Response): Promise<Response> => {
   const { email, password }: TLoginRequest = req.body
-  // const loginData: TLoginRequest = req.body
-
   const token = await createTokenService({ email, password })
-  // const token = await createTokenService(loginData)
 
   return res.json(token)
 }
