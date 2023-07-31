@@ -83,7 +83,7 @@ export const CardList = styled.li`
     color: var(--dark-gray);
   }
 
-  border-right: 1.4px solid var(--dark-gray);
+  border-right: 1.4px solid var(--green);
 
   @media (min-width: 769px) {
     width: 380px;
