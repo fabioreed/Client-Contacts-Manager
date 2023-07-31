@@ -18,7 +18,7 @@ export const ButtonDash = styled.button`
   font-size: .8rem;
   font-weight: 600;
 
-  padding: .4rem .7rem;
+  padding: .7rem 1rem;
   width: fit-content;
 
   border-radius: 6px;
@@ -66,7 +66,6 @@ export const Card = styled.li`
   flex-direction: column;
   gap: .7rem;
 
-  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   border-radius: 6px;
@@ -78,12 +77,13 @@ export const Card = styled.li`
 
   > h4 {
     font-size: .9rem;
+    font-weight: 600;
     color: var(--dark-gray);
   }
 
   > span {
     font-size: .7rem;
-    color: var(--light-gray);
+    color: var(--dark-gray);
   }
 
   > div {
@@ -106,6 +106,11 @@ export const Card = styled.li`
         color: var(--white);
       }
     }
+
+    button:nth-of-type(2):hover {
+      background-color: #ff4700;
+      color: var(--white);
+    }
   }
 
   @media (min-width: 769px) {
@@ -116,6 +121,7 @@ export const Card = styled.li`
 export const ContainerOfTheButtons = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: .4rem;
 
   position: relative;
 

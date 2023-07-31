@@ -32,7 +32,7 @@ const ModalCreate = () => {
         </FieldSet>
         <FieldSet>
           <label>Phone Number:</label>
-          <input type="number" placeholder="Phone Number" {...register('phone')} />
+          <input type="number" placeholder="Phone Number" {...register('number')} />
         </FieldSet>
         <button type="submit">+ Add</button>
       </ModalContainer>

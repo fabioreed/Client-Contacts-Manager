@@ -59,8 +59,8 @@ const Dashboard = () => {
               {contact.map((item) => (
                 <Card key={item.id}>
                   <h4>{item.name}</h4>
-                  <span>Number {item.number}</span>
-                  <span>{item.email}</span>
+                  <span>Number: {item?.number}</span>
+                  <span>Email: {item.email}</span>
                   <span>Created at: {item.createdAt}</span>
                   <div>
                     <button onClick={() => setSelectedContact(item)}>Edit</button>

@@ -20,6 +20,7 @@ const AllContacts = () => {
             <CardList key={item.id}>
               <h3>{item.name}</h3>
               <span>{item.email}</span>
+              <span>{item.number}</span>
             </CardList>
           ))
         ) : (
