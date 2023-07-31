@@ -19,9 +19,9 @@ export const Avatar = styled.div`
   gap: .4rem;
 
   > img {
-    width: 60px;
+    width: 70px;
     border-radius: 50%;
-    border: 2px solid var(--white);
+    border: 2.4px solid var(--white);
   }
 
   > section {

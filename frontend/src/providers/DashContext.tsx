@@ -106,7 +106,6 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
           if (id === item.id) {
             return {...item, ...data}
           } else {
-            // console.log(token, item.id)
             return item
           }
         })
