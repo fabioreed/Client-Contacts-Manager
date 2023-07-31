@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     --green: #C0E863;
     --mid-green: #12B1A6;
     --dark-green: #8DB14B;
-    --white: #FFFFFF;
+    --white: #f3f3f3;
     --light-gray: #D1D9DD;
     --dark-gray: #9DA1A5;
     --light-blue: #2373A3;
@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
     --dark-blue: #162534;
     --purple: #925C76;
     --mid-purple: #7B4F79;
+    --red: #ff4700;
   }
 
   body {

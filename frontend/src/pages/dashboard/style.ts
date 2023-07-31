@@ -34,6 +34,15 @@ export const ButtonDash = styled.button`
     color: var(--white);
   }
 
+  :nth-of-type(2) {
+    background-color: var(--light-blue);
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--mid-blue);
+    }
+  }
+
   @media (min-width: 769px) {
     align-self: flex-start;
   }
@@ -92,7 +101,7 @@ export const Card = styled.li`
 
     button {
       background-color: var(--green);
-      padding: .7rem;
+      padding: .7rem 1.4rem;
       border-radius: 6px;
 
       font-size: .7rem;
@@ -108,7 +117,7 @@ export const Card = styled.li`
     }
 
     button:nth-of-type(2):hover {
-      background-color: #ff4700;
+      background-color: var(--red);
       color: var(--white);
     }
   }
@@ -127,7 +136,7 @@ export const ContainerOfTheButtons = styled.div`
 
   > span {
     position: absolute;
-    top: -6px;
-    right: 0;
+    top: -13px;
+    right: 3px;
   }
 `

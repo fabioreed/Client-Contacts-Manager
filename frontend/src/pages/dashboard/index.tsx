@@ -50,7 +50,7 @@ const Dashboard = () => {
             See All Contacts
           </ButtonDash>
           <span>
-            {contact.length > 0 ? <Badge badgeContent={contact.length} color='primary' /> : <Badge invisible={true} />}
+            {contact.length > 0 ? <Badge badgeContent={contact.length} color='warning' /> : <Badge invisible={true} />}
           </span>
         </ContainerOfTheButtons>
         <SectionContainerDash>

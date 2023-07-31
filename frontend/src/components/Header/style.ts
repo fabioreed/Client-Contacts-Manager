@@ -29,12 +29,17 @@ export const Avatar = styled.div`
     flex-direction: column;
     align-items: center;
 
+    position: relative;
+
     > span {
+      position: absolute;
+      bottom: -12px;
+
       background-color: var(--green);
 
       border-radius: 2px;
 
-      padding: .4rem;
+      padding: .2rem .4rem;
 
       color: var(--primary-color);
 
@@ -75,10 +80,19 @@ export const DeleteAndExitContainer = styled.div`
     &:hover {
       color: var(--green);
     }
+
+    :nth-child(2):hover {
+      color: var(--red);
+    }
   }
+
   
   @media (min-width: 769px) {
     gap: 3rem;
     flex-direction: row;
+
+    > button {
+      font-size: .88rem;
+    }
   }
 `
