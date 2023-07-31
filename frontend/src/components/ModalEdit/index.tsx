@@ -23,8 +23,8 @@ const ModalEdit = ({ id, contact }: IModalEditProps) => {
 
   const submit: any = async (data: any) => {
     await editContact(data, id)
-    window.location.reload()
-    // setEditModal(!editModal)
+    // window.location.reload()
+    setEditModal(!editModal)
   }
 
   return (

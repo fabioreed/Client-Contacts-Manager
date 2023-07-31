@@ -42,7 +42,7 @@ export const DashContext = createContext({} as IContext)
 
 export const DashProvider = ({ children }: IDefaultProviderProps) => {
   const [contact, setContact] = useState<IClient[]>([])
-  const [editedContact, setEditedContact] =useState<IClient | null>(null)
+  const [editedContact, setEditedContact] = useState<IClient | null | any>(null)
   const [modal, setModal] = useState(false)
   const [editModal, setEditModal] = useState(false)
   const [listAllContacts, setListAllContacts] = useState(false)
@@ -68,7 +68,6 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
 
       console.log('Contact not added!')
     }
-    // fechar modal
   }
 
   const removeContact = async (id: string) => {

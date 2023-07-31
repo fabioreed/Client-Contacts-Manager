@@ -81,10 +81,15 @@ export const CloseBtn = styled.span`
   right: 10px;
 
   color: var(--primary-color);
-  font-size: 1.2rem;
   font-weight: 500;
 
   padding: .4rem;
 
   cursor: pointer;
+
+  z-index: 3;
+
+  &:hover {
+    color: var(--green);
+  }
 `

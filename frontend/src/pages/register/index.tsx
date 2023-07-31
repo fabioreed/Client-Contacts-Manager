@@ -36,13 +36,13 @@ const Register = () => {
         </div>
         <div>
           <label>Password:</label>
-          <input type="text" placeholder='Password' {...register('password')} />
+          <input type="password" placeholder='Password' {...register('password')} />
           {errors.password?.message ? <Error>{errors.password.message} *</Error> : null}
         </div>
         <div>
           <label>Phone number:</label>
-          <input type="text" placeholder='(+1) 555-555' {...register('phone')} />
-          {errors.phone?.message ? <Error>{errors.phone.message} *</Error> : null}
+          <input type="text" placeholder='(+1) 555-555' {...register('number')} />
+          {errors.number?.message ? <Error>{errors.number.message} *</Error> : null}
         </div>
         <ButtonContainerRegister>
           <LoginButton to='/'>Sign In</LoginButton>

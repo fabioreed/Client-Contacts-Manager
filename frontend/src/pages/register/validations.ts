@@ -12,7 +12,7 @@ export const formSchema = yup.object({
       .matches(/.{8,}/, "Deve conter no mínimo 8 caracteres")
       .required('Senha obrigatória'),
     
-  phone: yup
+  number: yup
     .string()
     .typeError("That doesn't look like a phone number")
     // .positive("A phone number can't start with a minus")

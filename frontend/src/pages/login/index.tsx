@@ -36,7 +36,7 @@ const Login = () => {
           </div>
           <div>
             <label>Password</label>
-            <input type="text" placeholder='Password' {...register('password')} />
+            <input type="password" placeholder='Password' {...register('password')} />
             {errors.password?.message ? <Error>{errors.password.message} *</Error> : null}
           </div>
           <ButtonContainerLogin>
