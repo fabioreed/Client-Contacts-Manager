@@ -30,7 +30,7 @@ export const ButtonDash = styled.button`
   transition: all .2s ease;
 
   &:hover {
-    background-color: var(--dark-green);
+    background-color: var(--primary-color);
     color: var(--white);
   }
 
@@ -102,7 +102,7 @@ export const Card = styled.li`
       transition: all .2s ease;
 
       &:hover {
-        background-color: var(--dark-green);
+        background-color: var(--primary-color);
         color: var(--white);
       }
     }
