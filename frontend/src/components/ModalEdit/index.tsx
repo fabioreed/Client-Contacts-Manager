@@ -16,7 +16,7 @@ const ModalEdit = ({ id, contact }: IModalEditProps) => {
     defaultValues: {
       name: editedContact?.name || '',
       email: editedContact?.email || '',
-      phone: editedContact?.number || ''
+      number: editedContact?.number || ''
     },
     resolver: yupResolver(schema)
   })
@@ -42,7 +42,7 @@ const ModalEdit = ({ id, contact }: IModalEditProps) => {
         </FieldSet>
         <FieldSet>
           <label>Phone Number:</label>
-          <input type="number" placeholder={contact.phone} {...register('phone')} />
+          <input type="number" placeholder={contact.number} {...register('number')} />
         </FieldSet>
         <button type="submit">Edit</button>
       </ModalContainer>
