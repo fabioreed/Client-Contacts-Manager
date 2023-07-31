@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -7,60 +7,78 @@ export const HeaderContainer = styled.header`
   padding: 1rem;
   
   background-color: var(--primary-color);
-  
-  button {
-    background: none;
-    color: var(--light-gray);
-    font-size: .8rem;
-    font-weight: 600;
-
-    transition: .2s ease;
-
-    &:hover {
-      background: var(--white);
-      border-radius: 6px;
-
-      color: var(--primary-color);
-
-      padding: .4rem .7rem;
-      opacity: .5;
-    }
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: .3rem;
-
-    > img {
-      width: 40px;
-    }
-
-    > section {
-      display: flex;
-      flex-direction: column;
-      gap: .3rem;
-      /* justify-content: center; */
-
-      > span {
-        color: var(--light-gray);
-        font-size: .7rem;
-        font-weight: 400;
-      }
-    }
-
-    @media (min-width: 769px) {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
 
   @media (min-width: 769px) {
     padding: 4rem 7rem;
   }
 `
 
+export const Avatar = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+
+  > img {
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+  }
+
+  > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > span {
+      background-color: var(--green);
+
+      border-radius: 2px;
+
+      padding: .4rem;
+
+      color: var(--primary-color);
+
+      font-size: .7rem;
+      font-weight: 600;
+    }
+  }
+
+  @media (min-width: 769px) {
+    align-items: center;
+
+    > section {
+      gap: .7rem;
+
+      > span {
+        font-size: .8rem;
+      }
+    }
+  }
+`
+
 export const DeleteAndExitContainer = styled.div`
   display: flex;
   gap: 1rem;
+  /* justify-content: space-between; */
+  flex-direction: column;
+
+  > button {
+    color: var(--white);
+    font-size: .7rem;
+    
+    background: none;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+
+    &:hover {
+      color: var(--green);
+    }
+  }
+  
+  @media (min-width: 769px) {
+    gap: 3rem;
+    flex-direction: row;
+  }
 `

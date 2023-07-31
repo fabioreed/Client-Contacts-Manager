@@ -1,7 +1,8 @@
 import { useContext } from "react"
-import { HeaderContainer, DeleteAndExitContainer } from "./style"
+import { HeaderContainer, DeleteAndExitContainer, Avatar } from "./style"
 import { UserContext } from "../../providers/UserContext"
 import { DashContext } from "../../providers/DashContext"
+import AvatarPicture from '../../assets/avatar.avif'
 
 const Header = () => {
   const { logout, user, deleteUser } = useContext(UserContext)
@@ -9,15 +10,14 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <div>
-        <img src='https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Prescription01&hatColor=Heather&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Pale' />
+      <Avatar>
+        <img src={AvatarPicture} />
         <section>
           <span>{user?.name}</span>
-          <span>{user?.email}</span>
         </section>
-        <button onClick={() => setProfileEditModal(!profileEditModal)}>Edit Profile</button>
-      </div>
+      </Avatar>
       <DeleteAndExitContainer>
+        <button onClick={() => setProfileEditModal(!profileEditModal)}>Edit Profile</button>
         <button onClick={deleteUser}>Delete User</button>
         <button onClick={logout}>Exit</button>
       </DeleteAndExitContainer>
