@@ -75,7 +75,7 @@ export const FieldSet = styled.fieldset`
   }
 `
 
-export const CloseBtn = styled.span`
+export const CloseBtn = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;

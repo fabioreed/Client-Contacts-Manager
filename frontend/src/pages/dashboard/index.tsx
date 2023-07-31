@@ -13,8 +13,8 @@ import EditProfileForm from "../../components/EditProfile"
 
 const Dashboard = () => {
   const navigate = useNavigate()
-  const [selectedContact, setSelectedContact] = useState<IClient | null | any>(null)
-  const { contact, setContact, modal, setModal, removeContact, listAllContacts, setListAllContacts, profileEditModal } = useContext(DashContext)
+  // const [selectedContact, setSelectedContact] = useState<IClient | null | any>(null)
+  const { contact, setContact, modal, setModal, removeContact, listAllContacts, setListAllContacts, profileEditModal, selectedContact, setSelectedContact } = useContext(DashContext)
 
   useEffect(() => {
     const token = localStorage.getItem('@clientToken')
@@ -63,7 +63,10 @@ const Dashboard = () => {
                   <span>Email: {item.email}</span>
                   <span>Created at: {item.createdAt}</span>
                   <div>
-                    <button onClick={() => setSelectedContact(item)}>Edit</button>
+                    <button onClick={() => {
+                      setSelectedContact(item)
+                      console.log('Aqui 2', selectedContact)
+                    }}>Edit</button>
                     <button onClick={() => removeContact(item.id)}>Delete</button>
                   </div>
                 </Card>

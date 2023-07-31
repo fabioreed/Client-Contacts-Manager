@@ -11,7 +11,7 @@ interface IModalEditProps {
 }
 
 const ModalEdit = ({ id, contact }: IModalEditProps) => {
-  const { editContact, editedContact, setEditModal, editModal } = useContext(DashContext)
+  const { editContact, editedContact, setEditModal, editModal, selectedContact, setSelectedContact } = useContext(DashContext)
   const { register, handleSubmit } = useForm({
     defaultValues: {
       name: editedContact?.name || '',
@@ -24,13 +24,18 @@ const ModalEdit = ({ id, contact }: IModalEditProps) => {
   const submit: any = async (data: any) => {
     await editContact(data, id)
     // window.location.reload()
+    setSelectedContact(!selectedContact)
     setEditModal(!editModal)
   }
 
   return (
     <BackgroundModal>
       <ModalContainer onSubmit={handleSubmit(submit)}>
-        <CloseBtn onClick={() => setEditModal(!editModal)}>X</CloseBtn>
+        <CloseBtn type='button' onClick={() => {
+          setEditModal(!editModal)
+          setSelectedContact(!selectedContact)
+          console.log('Aqui', editModal)
+        }}>X</CloseBtn>
         <h3>Edit your Contact</h3>
         <FieldSet>
           <label>Name:</label>
