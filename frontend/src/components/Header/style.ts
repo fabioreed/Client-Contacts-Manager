@@ -58,5 +58,9 @@ export const HeaderContainer = styled.header`
   @media (min-width: 769px) {
     padding: 4rem 7rem;
   }
+`
 
+export const DeleteAndExitContainer = styled.div`
+  display: flex;
+  gap: 1rem;
 `

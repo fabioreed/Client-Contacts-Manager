@@ -80,11 +80,18 @@ export const CloseBtn = styled.span`
   top: 10px;
   right: 10px;
 
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  font-weight: 500;
-
-  padding: .4rem;
-
   cursor: pointer;
+
+  color: var(--primary-color);
+  background: none;
+
+  border-radius: 50%;
+
+  padding: .5rem .7rem;
+
+  transition: .2s ease;
+
+  &:hover {
+    color: var(--green);
+  }
 `

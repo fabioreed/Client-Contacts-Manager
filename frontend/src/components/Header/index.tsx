@@ -1,25 +1,11 @@
 import { useContext } from "react"
-import { HeaderContainer } from "./style"
+import { HeaderContainer, DeleteAndExitContainer } from "./style"
 import { UserContext } from "../../providers/UserContext"
-// import { api } from "../../services/api"
+import { DashContext } from "../../providers/DashContext"
 
 const Header = () => {
-  const { logout, user } = useContext(UserContext)
-
-  // const deleteUser = async (id: string) => {
-  //   const token = localStorage.getItem('@clientToken')
-  //   try {
-  //     await api.delete(`clients/${id}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`
-  //       }
-  //     })
-
-  //     const remove = client.filter(item => {
-  //       return item
-  //     })
-  //   }
-  // }
+  const { logout, user, deleteUser } = useContext(UserContext)
+  const { setProfileEditModal, profileEditModal } = useContext(DashContext)
 
   return (
     <HeaderContainer>
@@ -29,9 +15,12 @@ const Header = () => {
           <span>{user?.name}</span>
           <span>{user?.email}</span>
         </section>
+        <button onClick={() => setProfileEditModal(!profileEditModal)}>Edit Profile</button>
       </div>
-      {/* <button onClick={deleteUser}>Delete User</button> */}
-      <button onClick={logout}>Exit</button>
+      <DeleteAndExitContainer>
+        <button onClick={deleteUser}>Delete User</button>
+        <button onClick={logout}>Exit</button>
+      </DeleteAndExitContainer>
     </HeaderContainer>
   )
 }

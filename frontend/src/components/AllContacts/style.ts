@@ -51,9 +51,8 @@ export const ContainerListAllContacts = styled.ul`
 export const ButtonClose = styled.button`
   z-index: 3;
 
-  background-color: var(--primary-color);
-
-  color: var(--white);
+  color: var(--primary-color);
+  background: none;
 
   border-radius: 50%;
 
@@ -62,10 +61,7 @@ export const ButtonClose = styled.button`
   transition: .2s ease;
 
   &:hover {
-    font-size: 1rem;
-    background-color: var(--white);
-    color: var(--primary-color);
-    border: 1.4px dotted var(--primary-color);
+    color: var(--green);
   }
 `
 

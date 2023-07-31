@@ -9,11 +9,12 @@ import ModalEdit from "../../components/ModalEdit"
 import Empty from "../../components/Empty"
 import AllContacts from "../../components/AllContacts"
 import { Badge } from '@mui/material'
+import EditProfileForm from "../../components/EditProfile"
 
 const Dashboard = () => {
   const navigate = useNavigate()
-  const [selectedContact, setSelectedContact] = useState<IClient | null>(null)
-  const { contact, setContact, modal, setModal, removeContact, listAllContacts, setListAllContacts } = useContext(DashContext)
+  const [selectedContact, setSelectedContact] = useState<IClient | null | any>(null)
+  const { contact, setContact, modal, setModal, removeContact, listAllContacts, setListAllContacts, profileEditModal } = useContext(DashContext)
 
   useEffect(() => {
     const token = localStorage.getItem('@clientToken')
@@ -76,6 +77,7 @@ const Dashboard = () => {
       { selectedContact && <ModalEdit id={selectedContact.id} contact={selectedContact} /> }
       { modal && <ModalCreate /> }
       { listAllContacts && <AllContacts /> }
+      { profileEditModal && <EditProfileForm /> }
     </>
   )
 }

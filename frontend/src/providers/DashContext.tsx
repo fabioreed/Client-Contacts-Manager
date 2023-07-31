@@ -34,6 +34,8 @@ type IContext = {
   setEditedContact: React.Dispatch<React.SetStateAction<boolean>> | any
   listAllContacts: boolean
   setListAllContacts: React.Dispatch<React.SetStateAction<boolean>>
+  profileEditModal: boolean
+  setProfileEditModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const DashContext = createContext({} as IContext)
@@ -44,6 +46,7 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
   const [modal, setModal] = useState(false)
   const [editModal, setEditModal] = useState(false)
   const [listAllContacts, setListAllContacts] = useState(false)
+  const [profileEditModal, setProfileEditModal] = useState(false)
 
   const createContact = async (data: IUser) => {
     const token = localStorage.getItem('@clientToken')
@@ -132,7 +135,8 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
       setEditModal, removeContact,
       editContact, editedContact,
       setEditedContact,
-      listAllContacts, setListAllContacts
+      listAllContacts, setListAllContacts,
+      profileEditModal, setProfileEditModal
     }}>
       { children }
     </DashContext.Provider>

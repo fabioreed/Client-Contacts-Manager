@@ -10,6 +10,8 @@ export interface IUserContext {
   userRegister: (formData: IRegisterFormValues) => Promise<void>
   userLogin: (formData: ILoginFormValues) => Promise<void>
   logout: () => void
+  deleteUser: () => Promise<void>
+  updateUser: (data: Partial<IUser>) => Promise<void>
 }
 
 export interface IDefaultProviderProps {
@@ -41,7 +43,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
           })
 
           setUser(res.data)
-          console.log(res.data)
 
           navigate('/dashboard')
         } catch (error) {
@@ -102,8 +103,54 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     navigate('/')
   }
 
+  const deleteUser = async () => {
+    const token = localStorage.getItem('@clientToken')
+    const id = localStorage.getItem('@clientId')
+
+    try {
+      await api.delete(`/clients/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      setUser(null)
+      localStorage.clear()
+
+      toast.success('Account deleted!')
+
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+      toast.error('Failed to delete account!')
+    }
+  }
+
+  const updateUser = async (data: Partial<IUser>) => {
+    const token = localStorage.getItem('@clientToken')
+    const id = localStorage.getItem('@clientId')
+
+    try {
+      const res = await api.patch(`/clients/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      setUser(prevUser => ({
+        ...prevUser,
+        ...res.data
+      }))
+
+      toast.success('User updated!')
+    } catch (error) {
+      console.log(error)
+      toast.error('Failed to update user!')
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ user, userRegister, userLogin, logout }}>
+    <UserContext.Provider value={{ user, userRegister, userLogin, logout, deleteUser, updateUser }}>
       { children }
     </UserContext.Provider>
   )
