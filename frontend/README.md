@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
+📝 Descrição
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A aplicação de Gerenciamento de Usuários e Contatos é uma ferramenta poderosa desenvolvida para simplificar e agilizar a manipulação de informações de usuários e seus respectivos contatos. Foi projetada para oferecer uma interface simples e segura, permitindo que os usuários interajam facilmente com seus dados e lista de contatos.
 
-Currently, two official plugins are available:
+📚 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Cadastro de Usuários: Permite a criação de novos registros de usuários com informações essenciais, como nome completo, endereço de e-mail, telefone e outros detalhes relevantes.
 
-## Expanding the ESLint configuration
+Listagem de Usuários: Possibilita a leitura dos detalhes de um usuário específico.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Atualização de Usuários: Permite a atualização dos dados de um usuário existente, como nome, sobrenome, endereço, entre outros campos.
 
-- Configure the top-level `parserOptions` property like this:
+Exclusão de Usuários: Caso necessário, a API permite a exclusão de usuários, garantindo a gestão adequada e a conformidade com a legislação de proteção de dados.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+Cadastro de Contatos: Além das funcionalidades de usuários, a API permite que contatos sejam associados a um usuário, com detalhes como nome, número de telefone, e-mail, entre outros.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Consulta de Contatos: Os desenvolvedores podem recuperar os contatos associados a um usuário específico.
+
+Atualização de Contatos: É possível atualizar os registros de contatos vinculados aos usuários, garantindo a precisão das informações.
+
+Exclusão de Contatos: Se necessário, os contatos podem ser excluídos, mantendo o banco de dados organizado e livre de informações obsoletas.
+
+Autenticação e Segurança: A API de CRUD de Usuários e Contatos é projetada com segurança em mente. Ela oferece recursos robustos de autenticação, permitindo que apenas usuários autorizados acessem e manipulem os dados. Utiliza protocolos seguros, como HTTPS, para proteger as comunicações entre os clientes e o servidor.
+
+🔧 Tecnologias:
+
+Typescript
+ReactJS
+Axios
+React Hook Form
+React Toastify
+React Router Dom
+Styled Components
+Zod
+
