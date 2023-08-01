@@ -53,7 +53,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       }
       getUser()
     }
-  }, [user])
+  }, [])
   
   const userRegister = async (formData: IRegisterFormValues) => {
     try {

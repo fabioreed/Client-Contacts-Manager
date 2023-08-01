@@ -99,7 +99,7 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
   const editContact = async (data: any, id: string) => {
     const token = localStorage.getItem('@clientToken')
       try {
-        await api.patch(`/contacts/${id}`, data, {
+        const res = await api.patch(`/contacts/${id}`, data, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -112,6 +112,8 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
             return item
           }
         })
+
+        console.log(res)
 
         setContact(newContact)
 

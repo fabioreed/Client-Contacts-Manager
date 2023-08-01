@@ -32,13 +32,13 @@ const Dashboard = () => {
         } catch (error) {
           console.log(error)
           console.log('Erro no useEffect!')
-          // navigate('/')
-          // localStorage.clear()
+          navigate('/')
+          localStorage.clear()
         }
       }
       getContacts()
     }
-  }, [contact]) //contact
+  }, []) //contact
 
   return (
     <>
@@ -57,7 +57,7 @@ const Dashboard = () => {
           {contact.length ? (
             <ListCard>
               {contact.map((item) => (
-                <Card key={item.id}>
+                <Card key={item.id || item.email || item.number}>
                   <h4>{item.name}</h4>
                   <span>Number: {item?.number}</span>
                   <span>Email: {item.email}</span>

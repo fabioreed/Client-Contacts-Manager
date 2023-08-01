@@ -126,8 +126,8 @@ export const LoginButton = styled(Link)`
 `
 
 export const Error = styled.p`
-    color: var(--negative);
-    font-size: .5rem;
+    color: var(--red);
+    font-size: .6rem;
     letter-spacing: .04rem;
     transition: .4s ease;
 `
