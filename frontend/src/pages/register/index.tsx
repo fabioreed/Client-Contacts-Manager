@@ -26,12 +26,12 @@ const Register = () => {
       <SectionContainerRegister onSubmit={handleSubmit(submit)}>
         <div>
           <label>Name:</label>
-          <input type="text" placeholder='Your name' {...register('name')}/>
+          <input type="text" placeholder='Nickname' {...register('name')}/>
           {errors.name?.message ? <Error>{errors.name.message} *</Error> : null}
         </div>
         <div>
           <label>Email:</label>
-          <input type="text" placeholder='Your best email' {...register('email')} />
+          <input type="text" placeholder='Your email' {...register('email')} />
           {errors.email?.message ? <Error>{errors.email.message} *</Error> : null}
         </div>
         <div>
@@ -41,7 +41,7 @@ const Register = () => {
         </div>
         <div>
           <label>Phone number:</label>
-          <input type="text" placeholder='(+1) 555-555' {...register('number')} />
+          <input type="text" placeholder='Phone Number' {...register('number')} />
           {errors.number?.message ? <Error>{errors.number.message} *</Error> : null}
         </div>
         <ButtonContainerRegister>

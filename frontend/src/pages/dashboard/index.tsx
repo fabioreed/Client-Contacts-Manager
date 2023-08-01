@@ -18,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     const token = localStorage.getItem('@clientToken')
     if (token) {
-      const getClients = async () => {
+      const getContacts = async () => {
         try {
           const res = await api.get('/contacts', {
             headers: {
@@ -31,13 +31,14 @@ const Dashboard = () => {
           navigate('/dashboard')
         } catch (error) {
           console.log(error)
-          navigate('/')
-          localStorage.clear()
+          console.log('Erro no useEffect!')
+          // navigate('/')
+          // localStorage.clear()
         }
       }
-      getClients()
+      getContacts()
     }
-  }, [])
+  }, [contact]) //contact
 
   return (
     <>
