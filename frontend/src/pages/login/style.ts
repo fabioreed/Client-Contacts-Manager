@@ -155,3 +155,63 @@ export const Error = styled.p`
     letter-spacing: .04rem;
     transition: .4s ease;
 `
+
+export const SocialMediaContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 1rem;
+
+  > div {
+    display: flex;
+    border-bottom: 1.4px solid var(--light-gray);
+    width: 100%;
+  }
+
+  > span {
+    color: var(--dark-gray);
+  }
+`
+
+export const GoogleAndFacebook = styled.aside`
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 1rem;
+
+  > button {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+
+    background: none;
+
+    border: 1px solid var(--light-gray);
+    border-radius: 6px;
+
+    padding: .8rem 4rem;
+
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--mid-blue);
+    }
+  }
+`
+
+export const SignUp = styled(Link)`
+  color: var(--light-blue);
+  font-weight: 600;
+
+
+`
+
+export const DontYouHave = styled.p`
+  margin-top: 1rem;
+
+  color: var(--light-gray);
+  font-size: .8rem;
+  align-self: center;
+`

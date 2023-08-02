@@ -29,31 +29,61 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const navigate = useNavigate()
   const [user, setUser] = useState<IUser | null>(null)
 
-  useEffect(() => { 
-    const token = localStorage.getItem('@clientToken')
-    const id = localStorage.getItem('@clientId')
+  // useEffect(() => { 
+  //   const token = localStorage.getItem('@clientToken')
+  //   const id = localStorage.getItem('@clientId')
 
-    if (token) {
-      const getUser = async () => {
-        try {
-          const res = await api.get(`/clients/${id}`, {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          })
+  //   if (token) {
+  //     const getUser = async () => {
+  //       try {
+  //         const res = await api.get(`/clients/${id}`, {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`
+  //           }
+  //         })
 
-          setUser(res.data)
+  //         setUser(res.data)
 
-          navigate('/dashboard')
-        } catch (error) {
-          console.log(error)
-          setUser(null)
-          localStorage.clear()
-        }
+  //         navigate('/dashboard')
+  //       } catch (error) {
+  //         console.log(error)
+  //         setUser(null)
+  //         localStorage.clear()
+  //       }
+  //     }
+  //     getUser()
+  //   }
+  // }, [])
+    
+    const getUser = async () => {
+      const token = localStorage.getItem('@clientToken')
+      const id = localStorage.getItem('@clientId')
+
+      try {
+        const res = await api.get(`/clients/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
+        setUser(res.data)
+        navigate('/dashboard')
+
+      } catch (error) {
+        console.log(error)
+        setUser(null)
+        localStorage.clear()
       }
-      getUser()
-    }
-  }, [])
+  }
+  
+    useEffect(() => {
+      const token = localStorage.getItem('@clientToken')
+      const id = localStorage.getItem('@clientId')
+
+      if (token) {
+        getUser()
+      }
+    }, [])
   
   const userRegister = async (formData: IRegisterFormValues) => {
     try {
@@ -81,13 +111,13 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       setUser(res.data)
 
       localStorage.setItem('@clientToken', res.data.token)
-
-      localStorage.setItem('@clientId', res.data.id)
+      localStorage.setItem('@clientId', res.data.clientReturn.id)
 
       toast.success('Logged in!')
 
       navigate('/dashboard')
       
+      getUser()
     } catch (error) {
       console.log(error)
 

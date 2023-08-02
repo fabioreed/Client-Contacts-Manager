@@ -1,10 +1,12 @@
-import { HeaderContainerLogin, SectionContainerLogin, ButtonContainerLogin, SectionContainerOfMain, RegisterButton, Error } from './style'
+import { HeaderContainerLogin, SectionContainerLogin, ButtonContainerLogin, SectionContainerOfMain, RegisterButton, Error, SocialMediaContainer, GoogleAndFacebook, SignUp, DontYouHave } from './style'
 import LoginCartoon from '../../assets/Email capture-bro.svg'
 import { useContext } from 'react'
 import * as yup from 'yup'
 import { ILoginFormValues, UserContext } from '../../providers/UserContext'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { FcGoogle } from 'react-icons/fc'
+import { FaFacebookSquare  } from 'react-icons/fa'
 
 const Login = () => {
   const schema = yup.object({
@@ -25,7 +27,7 @@ const Login = () => {
     <main>
         <HeaderContainerLogin>
           <h2>Sign in to your Account</h2>
-          <p>Sign in to your Account</p>
+          <p>Start managing your Contacts faster and better</p>
         </HeaderContainerLogin>
       <SectionContainerOfMain>
         <SectionContainerLogin onSubmit={handleSubmit(submit)}>
@@ -43,6 +45,16 @@ const Login = () => {
             <RegisterButton to='/register'>Create Account</RegisterButton>
             <button type='submit'>Login</button>
           </ButtonContainerLogin>
+          <SocialMediaContainer>
+            <div></div>
+            <span>or</span>
+            <div></div>
+          </SocialMediaContainer>
+          <GoogleAndFacebook>
+            <button><FcGoogle /> Google</button>
+            <button><FaFacebookSquare />Facebook</button>
+          </GoogleAndFacebook>
+          <DontYouHave>Don't you have an account? <SignUp to='/register'>Sign up</SignUp></DontYouHave>
         </SectionContainerLogin>
         <aside>
           <img src={LoginCartoon} />

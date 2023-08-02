@@ -18,7 +18,7 @@ class Contact {
   @CreateDateColumn({ type: 'date' })
   createdAt: string
 
-  @ManyToOne(() => Client, (client) => client.contact)
+  @ManyToOne(() => Client, (client) => client.contact, { onDelete: "CASCADE" })
   client: Client
 }
 

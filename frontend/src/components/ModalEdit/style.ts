@@ -93,3 +93,8 @@ export const CloseBtn = styled.span`
     color: var(--green);
   }
 `
+
+export const ContainerButtonEdit = styled.div`
+  display: flex;
+  justify-content: space-between;
+`

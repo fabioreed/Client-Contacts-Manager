@@ -6,6 +6,7 @@ import { TLoginRequest } from "../../interfaces/login.interface"
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 import { Repository } from "typeorm"
+import { clientSchemaResponse } from "../../schemas/client.schema"
 
 interface TokenResponse {
   token: string
@@ -28,6 +29,8 @@ const createTokenService = async ({ email, password }: TLoginRequest): Promise<T
   const comparePassword = await compare(password, client.password)
 
   if (!comparePassword) throw new AppError('Invalid credentials', 403)
+
+  const clientReturn = clientSchemaResponse.parse(client)
   
   const token: string = jwt.sign(
     {
@@ -40,14 +43,14 @@ const createTokenService = async ({ email, password }: TLoginRequest): Promise<T
     }
   )
 
-  const response = {
-    token,
-    id: client.id,
-    email: client.email,
-    name: client.name
-  }
+  // const response = {
+  //   token,
+  //   id: client.id,
+  //   email: client.email,
+  //   name: client.name
+  // }
 
-  return response
+  return { token, clientReturn }
 }
 
 export { createTokenService }

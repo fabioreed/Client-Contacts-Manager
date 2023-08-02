@@ -71,15 +71,15 @@ const Dashboard = () => {
                 </Card>
               ))}
             </ListCard>
-            ) : (
+          ) : (
             <Empty />)}
         </SectionContainerDash>
       </MainContainer>
 
-      { selectedContact && <ModalEdit id={selectedContact.id} contact={selectedContact} /> }
-      { modal && <ModalCreate /> }
-      { listAllContacts && <AllContacts /> }
-      { profileEditModal && <EditProfileForm /> }
+      {selectedContact && <ModalEdit id={selectedContact.id} contact={selectedContact} />}
+      {modal && <ModalCreate />}
+      {listAllContacts && <AllContacts />}
+      {profileEditModal && <EditProfileForm />}
     </>
   )
 }

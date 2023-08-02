@@ -14,13 +14,13 @@ export const MyRoutes = () => {
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='*' element={<Login />} />
-        
+
         <Route path='/dashboard' element={<ProtectedRoutes />}>
           <Route index element={
             <DashProvider>
               <Dashboard />
             </DashProvider>
-            }
+          }
           />
         </Route>
       </Routes>

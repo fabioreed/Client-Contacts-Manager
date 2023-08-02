@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { BackgroundModal, CloseBtn, FieldSet, ModalContainer } from "./style"
 import { DashContext, IClient } from "../../providers/DashContext"
 import { useForm } from "react-hook-form"
@@ -20,6 +20,10 @@ const ModalEdit = ({ id, contact }: IModalEditProps) => {
     },
     resolver: yupResolver(schema)
   })
+
+  // useEffect(() => {
+  //   contact
+  // }, [contact])
 
   const submit: any = async (data: any) => {
     await editContact(data, id)
@@ -44,7 +48,7 @@ const ModalEdit = ({ id, contact }: IModalEditProps) => {
           <label>Phone Number:</label>
           <input type="number" placeholder={contact.number} {...register('number')} />
         </FieldSet>
-        <button type="submit">Edit</button>
+          <button type="submit">Edit</button>
       </ModalContainer>
     </BackgroundModal>
   )
