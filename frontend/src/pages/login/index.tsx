@@ -6,7 +6,7 @@ import { ILoginFormValues, UserContext } from '../../providers/UserContext'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FcGoogle } from 'react-icons/fc'
-import { FaFacebookSquare  } from 'react-icons/fa'
+import { FaFacebookSquare, FaApple  } from 'react-icons/fa'
 
 const Login = () => {
   const schema = yup.object({
@@ -53,6 +53,7 @@ const Login = () => {
           <GoogleAndFacebook>
             <button><FcGoogle /> Google</button>
             <button><FaFacebookSquare />Facebook</button>
+            <button><FaApple />Apple</button>
           </GoogleAndFacebook>
           <DontYouHave>Don't you have an account? <SignUp to='/register'>Sign up</SignUp></DontYouHave>
         </SectionContainerLogin>

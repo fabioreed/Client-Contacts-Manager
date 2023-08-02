@@ -177,6 +177,8 @@ export const SocialMediaContainer = styled.section`
 
 export const GoogleAndFacebook = styled.aside`
   display: flex;
+  flex-direction: column;
+  gap: .8rem;
   justify-content: space-between;
 
   margin-top: 1rem;
@@ -184,9 +186,12 @@ export const GoogleAndFacebook = styled.aside`
   > button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: .4rem;
 
     background: none;
+
+    font-size: 1rem;
 
     border: 1px solid var(--light-gray);
     border-radius: 6px;
@@ -198,20 +203,28 @@ export const GoogleAndFacebook = styled.aside`
     &:hover {
       border: 1px solid var(--mid-blue);
     }
+
+    :nth-child(2) {
+      color: var(--mid-blue)
+    }
+
+    :nth-child(3) {
+      font-size: 1.1rem;
+      color: var(--black);
+    }
   }
 `
 
 export const SignUp = styled(Link)`
   color: var(--light-blue);
   font-weight: 600;
-
-
+  font-size: 1rem;
 `
 
 export const DontYouHave = styled.p`
   margin-top: 1rem;
 
-  color: var(--light-gray);
-  font-size: .8rem;
+  color: var(--dark-gray);
+  font-size: 1rem;
   align-self: center;
 `
