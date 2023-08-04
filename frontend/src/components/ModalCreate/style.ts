@@ -38,7 +38,7 @@ export const ModalContainer = styled.form`
     transition: .2s ease;
 
     &:hover {
-      background-color: var(--dark-green);
+      background-color: var(--dark-blue);
       color: var(--white);
     }
   }

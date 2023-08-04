@@ -81,23 +81,19 @@ export const ButtonContainerRegister = styled.aside`
   flex-direction: column;
   gap: .7rem;
 
-  /* > span {
-    color: var(--dark-green);
-    font-size: .7rem;
-    font-weight: 600;
-
-    align-self: flex-end;
-  } */
-
   button {
     background: var(--green);
     padding: .7rem;
     border-radius: 6px;
 
+    font-size: 1rem;
+
     cursor: pointer;
+
+    transition: .2s ease;
     
     &:hover {
-      background-color: var(--dark-green);
+      background-color: var(--black);
       color: var(--white);
     }
   }

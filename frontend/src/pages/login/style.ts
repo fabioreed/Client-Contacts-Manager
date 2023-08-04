@@ -114,7 +114,7 @@ export const ButtonContainerLogin = styled.aside`
     transition: .2s ease;
     
     &:hover {
-      background-color: var(--mid-green);
+      background-color: var(--black);
       color: var(--white);
     }
   }
