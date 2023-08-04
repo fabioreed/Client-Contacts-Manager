@@ -52,7 +52,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   
     useEffect(() => {
       const token = localStorage.getItem('@clientToken')
-      const id = localStorage.getItem('@clientId')
+      // const id = localStorage.getItem('@clientId')
 
       if (token) {
         getUser()

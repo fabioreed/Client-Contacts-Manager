@@ -29,9 +29,9 @@ export const ContainerListAllContacts = styled.ul`
   overflow-y: auto;
 
   * {
-  scrollbar-width: thin;
-  scrollbar-color: blue orange;
-}
+    scrollbar-width: thin;
+    scrollbar-color: blue orange;
+  }
 
 /* Works on Chrome, Edge, and Safari */
   ::-webkit-scrollbar {
@@ -134,4 +134,10 @@ export const NothingHere = styled.div`
   gap: .7rem;
 
   align-items: center;
+
+  @media (min-width: 769px) {
+    img {
+      width: 80%;
+    }
+  }
 `
