@@ -1,8 +1,9 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { IDefaultProviderProps } from "./UserContext"
 import { api } from "../services/api"
 import { IUser } from "./@types"
 import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 export interface IClient {
   id: string
@@ -38,6 +39,8 @@ type IContext = {
   setProfileEditModal: React.Dispatch<React.SetStateAction<boolean>>
   selectedContact: any
   setSelectedContact: React.Dispatch<any>
+  profile: IClient[]
+  setProfile: React.Dispatch<React.SetStateAction<IClient[]>>
 }
 
 export const DashContext = createContext({} as IContext)
@@ -50,6 +53,35 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
   const [listAllContacts, setListAllContacts] = useState(false)
   const [profileEditModal, setProfileEditModal] = useState(false)
   const [selectedContact, setSelectedContact] = useState<IClient | null | any>(null)
+  const [profile, setProfile] = useState<IClient[]>([])
+  const navigate = useNavigate()
+
+
+  useEffect(() => {
+    const token = localStorage.getItem('@clientToken')
+    if (token) {
+      const getContacts = async () => {
+        try {
+          const res = await api.get('/contacts', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
+
+          setProfile(res.data)
+
+          navigate('/dashboard')
+        } catch (error) {
+          console.log(error)
+          console.log('Erro no useEffect!')
+
+          navigate('/')
+          localStorage.clear()
+        }
+      }
+      getContacts()
+    }
+  }, [contact])
 
   const createContact = async (data: IUser) => {
     const token = localStorage.getItem('@clientToken')
@@ -76,10 +108,6 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
       console.log('Contact not added!')
     }
   }
-
-  // useEffect(() => {
-  //   console.log(contact, 'Updated contact list')
-  // }, [contact])
 
   const removeContact = async (id: string) => {
     const token = localStorage.getItem('@clientToken')
@@ -149,7 +177,8 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
       setEditedContact,
       listAllContacts, setListAllContacts,
       profileEditModal, setProfileEditModal,
-      selectedContact, setSelectedContact
+      selectedContact, setSelectedContact,
+      profile, setProfile
     }}>
       { children }
     </DashContext.Provider>

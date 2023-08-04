@@ -4,7 +4,9 @@ import { BackgroundListAllContacts, ButtonClose, CardList, ContainerListAllConta
 import cartoon from '../../assets/Oil lamp-pana.svg'
 
 const AllContacts = () => {
-  const { contact, listAllContacts, setListAllContacts } = useContext(DashContext)
+  const { listAllContacts, setListAllContacts, profile } = useContext(DashContext)
+
+  console.log(profile)
 
   return (
     <BackgroundListAllContacts>
@@ -15,8 +17,8 @@ const AllContacts = () => {
             X
           </ButtonClose>
         </TopPartContainer>
-        {contact.length ? (
-          contact.map(item => (
+        {profile.length ? (
+          profile.map(item => (
             <CardList key={item.id}>
               <h3>{item.name}</h3>
               <span>{item.email}</span>
