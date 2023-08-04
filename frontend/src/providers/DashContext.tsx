@@ -72,7 +72,6 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
           navigate('/dashboard')
         } catch (error) {
           console.log(error)
-          console.log('Erro no useEffect!')
 
           navigate('/')
           localStorage.clear()
@@ -93,18 +92,14 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
 
       const newContact = res.data
 
-      console.log(newContact, 'console do contato criado agora!')
-
       toast.success('Contact added!')
 
       setContact([...contact, newContact])
 
-      console.log(contact, 'Console na hora de CRIAR')
-
     } catch (error) {
       console.log(error)
 
-      console.log('Contact not added!')
+      toast.error('Contact not added!')
     }
   }
 

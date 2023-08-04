@@ -28,32 +28,6 @@ export const UserContext = createContext({} as IUserContext)
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const navigate = useNavigate()
   const [user, setUser] = useState<IUser | null>(null)
-
-  // useEffect(() => { 
-  //   const token = localStorage.getItem('@clientToken')
-  //   const id = localStorage.getItem('@clientId')
-
-  //   if (token) {
-  //     const getUser = async () => {
-  //       try {
-  //         const res = await api.get(`/clients/${id}`, {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`
-  //           }
-  //         })
-
-  //         setUser(res.data)
-
-  //         navigate('/dashboard')
-  //       } catch (error) {
-  //         console.log(error)
-  //         setUser(null)
-  //         localStorage.clear()
-  //       }
-  //     }
-  //     getUser()
-  //   }
-  // }, [])
     
     const getUser = async () => {
       const token = localStorage.getItem('@clientToken')
@@ -100,7 +74,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       console.log(error)
       
       toast.error('Email already exists.')
-
     }
   }
 
