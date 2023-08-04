@@ -66,6 +66,10 @@ export const ContainerListAllContacts = styled.ul`
       color: var(--white);
     }
   }
+
+  @media (min-width: 769px) {
+    width: 460px;
+  }
 `
 
 export const ButtonClose = styled.button`

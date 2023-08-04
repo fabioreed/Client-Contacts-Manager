@@ -56,7 +56,6 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
   const [profile, setProfile] = useState<IClient[]>([])
   const navigate = useNavigate()
 
-
   useEffect(() => {
     const token = localStorage.getItem('@clientToken')
     if (token) {

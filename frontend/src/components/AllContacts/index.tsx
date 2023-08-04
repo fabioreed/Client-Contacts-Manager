@@ -6,8 +6,6 @@ import cartoon from '../../assets/Oil lamp-pana.svg'
 const AllContacts = () => {
   const { listAllContacts, setListAllContacts, profile } = useContext(DashContext)
 
-  console.log(profile)
-
   return (
     <BackgroundListAllContacts>
       <ContainerListAllContacts>
