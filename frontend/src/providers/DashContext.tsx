@@ -62,9 +62,13 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
 
       const newContact = res.data
 
+      console.log(newContact, 'console do contato criado agora!')
+
       toast.success('Contact added!')
 
       setContact([...contact, newContact])
+
+      console.log(contact, 'Console na hora de CRIAR')
 
     } catch (error) {
       console.log(error)
@@ -72,6 +76,10 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
       console.log('Contact not added!')
     }
   }
+
+  // useEffect(() => {
+  //   console.log(contact, 'Updated contact list')
+  // }, [contact])
 
   const removeContact = async (id: string) => {
     const token = localStorage.getItem('@clientToken')

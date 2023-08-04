@@ -25,6 +25,26 @@ export const ContainerListAllContacts = styled.ul`
   transform: translate(-50%, -50%);
 
   padding: 2.4rem;
+  height: 500px;
+  overflow-y: auto;
+
+  * {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+/* Works on Chrome, Edge, and Safari */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--light-gray);
+    border-radius: 20px;
+    border: .8px solid var(--dark-gray);
+  }
 
   background: var(--white);
 

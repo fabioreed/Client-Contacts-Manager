@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { BackgroundModal, CloseBtn, FieldSet, ModalContainer } from "./style"
 import { DashContext, IClient } from "../../providers/DashContext"
 import { useForm } from "react-hook-form"
@@ -20,10 +20,6 @@ const ModalEdit = ({ id, contact }: IModalEditProps) => {
     },
     resolver: yupResolver(schema)
   })
-
-  // useEffect(() => {
-  //   contact
-  // }, [contact])
 
   const submit: any = async (data: any) => {
     await editContact(data, id)

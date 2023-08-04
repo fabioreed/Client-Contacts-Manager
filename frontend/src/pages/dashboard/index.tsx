@@ -1,7 +1,7 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import Header from "../../components/Header"
 import { ButtonDash, Card, ContainerOfTheButtons, ListCard, MainContainer, SectionContainerDash } from "./style"
-import { DashContext } from "../../providers/DashContext"
+import { DashContext, IClient } from "../../providers/DashContext"
 import { api } from "../../services/api"
 import { useNavigate } from "react-router-dom"
 import ModalCreate from "../../components/ModalCreate"
@@ -14,6 +14,7 @@ import EditProfileForm from "../../components/EditProfile"
 const Dashboard = () => {
   const navigate = useNavigate()
   const { contact, setContact, modal, setModal, removeContact, listAllContacts, setListAllContacts, profileEditModal, selectedContact, setSelectedContact } = useContext(DashContext)
+  const [profile, setProfile] = useState<IClient[]>([])
 
   useEffect(() => {
     const token = localStorage.getItem('@clientToken')
@@ -26,19 +27,21 @@ const Dashboard = () => {
             }
           })
 
-          setContact(res.data)
+          // setContact(res.data)
+          setProfile(res.data)
 
           navigate('/dashboard')
         } catch (error) {
           console.log(error)
           console.log('Erro no useEffect!')
+          
           navigate('/')
           localStorage.clear()
         }
       }
       getContacts()
     }
-  }, []) //contact
+  }, [contact]) //contact
 
   return (
     <>
@@ -50,13 +53,13 @@ const Dashboard = () => {
             See All Contacts
           </ButtonDash>
           <span>
-            {contact.length > 0 ? <Badge badgeContent={contact.length} color='warning' /> : <Badge invisible={true} />}
+            {profile.length > 0 ? <Badge badgeContent={profile.length} color='warning' /> : <Badge invisible={true} />}
           </span>
         </ContainerOfTheButtons>
         <SectionContainerDash>
-          {contact.length ? (
+          {profile.length ? (
             <ListCard>
-              {contact.map((item) => (
+              {profile.map((item) => (
                 <Card key={item.id || item.email || item.number}>
                   <h4>{item.name}</h4>
                   <span>Number: {item?.number}</span>
