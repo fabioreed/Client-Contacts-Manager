@@ -12,6 +12,8 @@ export interface IUserContext {
   logout: () => void
   deleteUser: () => Promise<void>
   updateUser: (data: Partial<IUser>) => Promise<void>
+  loading: boolean
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface IDefaultProviderProps {
@@ -28,12 +30,14 @@ export const UserContext = createContext({} as IUserContext)
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const navigate = useNavigate()
   const [user, setUser] = useState<IUser | null>(null)
+  const [loading, setLoading] = useState(false)
     
     const getUser = async () => {
       const token = localStorage.getItem('@clientToken')
       const id = localStorage.getItem('@clientId')
 
       try {
+        setLoading(true)
         const res = await api.get(`/clients/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,6 +51,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         console.log(error)
         setUser(null)
         localStorage.clear()
+      } finally {
+        setLoading(false)
       }
   }
   
@@ -61,6 +67,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   
   const userRegister = async (formData: IRegisterFormValues) => {
     try {
+      setLoading(true)
       const res = await api.post('/clients', formData)
 
       setUser(res.data)
@@ -74,11 +81,14 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       console.log(error)
       
       toast.error('Email already exists.')
+    } finally {
+      setLoading(false)
     }
   }
 
   const userLogin = async (formData: ILoginFormValues) => {
     try {
+      setLoading(true)
       const res = await api.post('/login', formData)
       
       setUser(res.data)
@@ -95,6 +105,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       console.log(error)
 
       toast.error('Something went wrong!')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -111,6 +123,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     const id = localStorage.getItem('@clientId')
 
     try {
+      setLoading(true)
       await api.delete(`/clients/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -126,6 +139,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     } catch (error) {
       console.log(error)
       toast.error('Failed to delete account!')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -134,6 +149,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     const id = localStorage.getItem('@clientId')
 
     try {
+      setLoading(true)
       const res = await api.patch(`/clients/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -149,11 +165,13 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     } catch (error) {
       console.log(error)
       toast.error('Failed to update user!')
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
-    <UserContext.Provider value={{ user, userRegister, userLogin, logout, deleteUser, updateUser }}>
+    <UserContext.Provider value={{ user, userRegister, userLogin, logout, deleteUser, updateUser, loading, setLoading }}>
       { children }
     </UserContext.Provider>
   )

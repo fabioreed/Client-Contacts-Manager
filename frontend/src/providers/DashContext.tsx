@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from "react"
-import { IDefaultProviderProps } from "./UserContext"
+import { createContext, useContext, useEffect, useState } from "react"
+import { IDefaultProviderProps, UserContext } from "./UserContext"
 import { api } from "../services/api"
 import { IUser } from "./@types"
 import { toast } from "react-toastify"
@@ -55,6 +55,7 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
   const [selectedContact, setSelectedContact] = useState<IClient | null | any>(null)
   const [profile, setProfile] = useState<IClient[]>([])
   const navigate = useNavigate()
+  const { setLoading } = useContext(UserContext)
 
   useEffect(() => {
     const token = localStorage.getItem('@clientToken')
@@ -84,6 +85,7 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
   const createContact = async (data: IUser) => {
     const token = localStorage.getItem('@clientToken')
     try {
+      setLoading(true)
       const res = await api.post('/contacts', data, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -100,12 +102,15 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
       console.log(error)
 
       toast.error('Contact not added!')
+    } finally {
+      setLoading(false)
     }
   }
 
   const removeContact = async (id: string) => {
     const token = localStorage.getItem('@clientToken')
     try {
+      setLoading(true)
       await api.delete(`/contacts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -123,12 +128,15 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
       console.log(error)
 
       toast.error('Contact cannot be removed!')
+    } finally {
+      setLoading(false)
     }
   }
 
   const editContact = async (data: any, id: string) => {
     const token = localStorage.getItem('@clientToken')
-      try {
+    try {
+      setLoading(true)
         const res = await api.patch(`/contacts/${id}`, data, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -158,7 +166,9 @@ export const DashProvider = ({ children }: IDefaultProviderProps) => {
         console.log(error)
 
         toast.error('Something went wrong to update!')
-      }
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

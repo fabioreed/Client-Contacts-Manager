@@ -2,9 +2,10 @@ import { useContext, useState } from "react"
 import { UserContext } from "../../providers/UserContext"
 import { BackgroundModalEditProfile, HeaderModalContainer, ModalContainerEditProfile } from "./style"
 import { DashContext } from "../../providers/DashContext"
+import Loading from "../Loading"
 
 const EditProfileForm = () => {
-  const { user, updateUser } = useContext(UserContext)
+  const { user, updateUser, loading } = useContext(UserContext)
   const { setProfileEditModal, profileEditModal } = useContext(DashContext)
   const [formData, setFormData] = useState({
     name: user?.name || "",
@@ -60,7 +61,9 @@ const EditProfileForm = () => {
             onChange={handleChange}
           />
         </fieldset>
-        <button type="submit">Update Profile</button>
+        <button type="submit"
+          disabled={loading}>{loading ? <Loading /> : <span>Update Profile</span>}
+        </button>
       </ModalContainerEditProfile>
     </BackgroundModalEditProfile>
   )

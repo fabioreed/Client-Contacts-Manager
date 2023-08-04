@@ -4,9 +4,12 @@ import { DashContext } from "../../providers/DashContext"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { schema } from "./validators"
+import { UserContext } from "../../providers/UserContext"
+import Loading from "../Loading"
 
 const ModalCreate = () => {
   const { setModal, modal, createContact } = useContext(DashContext)
+  const { loading } = useContext(UserContext)
 
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema)
@@ -34,7 +37,9 @@ const ModalCreate = () => {
           <label>Phone Number:</label>
           <input type="number" placeholder="Phone Number" {...register('number')} />
         </FieldSet>
-        <button type="submit">+ Add</button>
+        <button type="submit"
+          disabled={loading}>{loading ? <Loading /> : <span>+Add</span>}
+        </button>
       </ModalContainer>
     </BackgroundModal>
   )

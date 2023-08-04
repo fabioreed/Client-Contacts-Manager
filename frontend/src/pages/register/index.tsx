@@ -5,9 +5,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { UserContext } from "../../providers/UserContext"
 import { formSchema } from "./validations"
 import { IRegisterFormValues } from "../../providers/@types"
+import Loading from "../../components/Loading"
 
 const Register = () => {
-  const { userRegister } = useContext(UserContext)
+  const { userRegister, loading } = useContext(UserContext)
   const { register, handleSubmit, formState: { errors } } = useForm<IRegisterFormValues>({
     resolver: yupResolver(formSchema)
   })
@@ -45,8 +46,12 @@ const Register = () => {
           {errors.number?.message ? <Error>{errors.number.message} *</Error> : null}
         </div>
         <ButtonContainerRegister>
-          <LoginButton to='/'>Sign In</LoginButton>
-          <button type='submit'>Register</button>
+          <LoginButton to='/'>
+            Sign In
+          </LoginButton>
+          <button type='submit'
+            disabled={loading}>{loading ? <Loading /> : <span>Register</span>}
+          </button>
         </ButtonContainerRegister>
       </SectionContainerRegister>
     </main>

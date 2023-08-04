@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookSquare, FaApple  } from 'react-icons/fa'
+import Loading from '../../components/Loading'
 
 const Login = () => {
   const schema = yup.object({
@@ -14,7 +15,7 @@ const Login = () => {
     password: yup.string().required('Password is required')
   })
 
-  const { userLogin } = useContext(UserContext)
+  const { userLogin, loading } = useContext(UserContext)
   const { register, handleSubmit, formState: { errors }} = useForm<ILoginFormValues>({
     resolver: yupResolver(schema)
   })
@@ -43,7 +44,9 @@ const Login = () => {
           </div>
           <ButtonContainerLogin>
             <RegisterButton to='/register'>Create Account</RegisterButton>
-            <button type='submit'>Login</button>
+            <button type='submit'
+              disabled={loading}>{loading ? <Loading /> : <span>Login</span>}
+            </button>
           </ButtonContainerLogin>
           <SocialMediaContainer>
             <div></div>

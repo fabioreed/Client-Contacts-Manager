@@ -8,9 +8,12 @@ import Empty from "../../components/Empty"
 import AllContacts from "../../components/AllContacts"
 import { Badge } from '@mui/material'
 import EditProfileForm from "../../components/EditProfile"
+import Loading from "../../components/Loading"
+import { UserContext } from "../../providers/UserContext"
 
 const Dashboard = () => {
   const { modal, setModal, removeContact, listAllContacts, setListAllContacts, profileEditModal, selectedContact, setSelectedContact, profile } = useContext(DashContext)
+  const { loading } = useContext(UserContext)
 
   return (
     <>
@@ -38,7 +41,9 @@ const Dashboard = () => {
                     <button onClick={() => {
                       setSelectedContact(item)
                     }}>Edit</button>
-                    <button onClick={() => removeContact(item.id)}>Delete</button>
+                    <button onClick={() => removeContact(item.id)}
+                      disabled={loading}>{loading ? <Loading /> : <span>Delete</span>}
+                    </button>
                   </div>
                 </Card>
               ))}
