@@ -83,6 +83,7 @@ export const CloseBtn = styled.span`
   cursor: pointer;
 
   color: var(--primary-color);
+  
   background: none;
 
   border-radius: 50%;
